@@ -1,3 +1,4 @@
+require 'pry'
 describe 'Song Associations' do
   before do
     @song = Song.create(name: "Forever")
@@ -22,7 +23,7 @@ describe 'Song Associations' do
   it 'can be created with an artist as an attribute' do
     artist = Artist.create(name: "The Beatles")
     song = Song.create(name: "Yellow Submarine", artist: artist)
-
+    # binding.pry
     expect(Song.where(name: "Yellow Submarine").first.artist).to eq(artist)
   end
 
@@ -32,6 +33,8 @@ describe 'Song Associations' do
 
     expect(Song.where(name: "Forever").first.genre).to eq(genre)
     expect(Genre.where(name: "Rap").first.songs).to include(@song)
+    binding.pry
+
   end
-  
+
 end
