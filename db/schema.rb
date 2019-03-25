@@ -12,4 +12,20 @@
 
 ActiveRecord::Schema.define(version: 3) do
 
+  create_table "artists", force: :cascade do |t|
+    t.text "name"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.text "name"
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.text "name"
+    t.integer "genre_id"
+    t.integer "artist_id"
+    t.index ["artist_id"], name: "index_songs_on_artist_id"
+    t.index ["genre_id"], name: "index_songs_on_genre_id"
+  end
+
 end
